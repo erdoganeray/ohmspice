@@ -6,7 +6,7 @@ This package provides SPICE component classes for building circuits.
 from ohmspice.components.base import Component
 from ohmspice.components.passive import Capacitor, Inductor, Resistor
 from ohmspice.components.sources import CurrentSource, VoltageSource
-from ohmspice.components.utils import parse_value, format_value
+from ohmspice.components.utils import format_value, parse_value
 
 __all__ = [
     "Component",

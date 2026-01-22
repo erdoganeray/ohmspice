@@ -1,6 +1,5 @@
 """Source components: VoltageSource, CurrentSource."""
 
-from typing import Union
 
 from ohmspice.components.base import Component
 

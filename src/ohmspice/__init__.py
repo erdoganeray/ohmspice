@@ -18,7 +18,6 @@ __author__ = "Eray Erdogan"
 
 # Core classes
 from ohmspice.circuit import Circuit
-from ohmspice.netlist import NetlistGenerator
 
 # Components
 from ohmspice.components import (
@@ -31,6 +30,7 @@ from ohmspice.components import (
     format_value,
     parse_value,
 )
+from ohmspice.netlist import NetlistGenerator
 
 # Simulators - import conditionally to avoid errors if dependencies missing
 try:

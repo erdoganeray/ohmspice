@@ -1,6 +1,5 @@
 """Circuit builder for creating SPICE circuits."""
 
-from typing import Union
 
 from ohmspice.components.base import Component
 from ohmspice.components.passive import Capacitor, Inductor, Resistor
@@ -68,7 +67,7 @@ class Circuit:
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
     ) -> "Circuit":
         """Add a resistor to the circuit.
 
@@ -88,7 +87,7 @@ class Circuit:
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
         initial_voltage: float | None = None,
     ) -> "Circuit":
         """Add a capacitor to the circuit.
@@ -112,7 +111,7 @@ class Circuit:
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
         initial_current: float | None = None,
     ) -> "Circuit":
         """Add an inductor to the circuit.

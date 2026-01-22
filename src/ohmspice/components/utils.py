@@ -13,7 +13,6 @@ Supports SPICE engineering notation:
 """
 
 import re
-from typing import Union
 
 # SPICE multiplier prefixes
 MULTIPLIERS: dict[str, float] = {
@@ -51,7 +50,7 @@ VALUE_PATTERN = re.compile(
 )
 
 
-def parse_value(value: Union[str, int, float]) -> float:
+def parse_value(value: str | int | float) -> float:
     """Parse a SPICE value string into a float.
 
     Args:

@@ -6,7 +6,6 @@ Supports parsing LTspice .raw binary files.
 import struct
 from enum import Enum
 from pathlib import Path
-from typing import Any
 
 import numpy as np
 
@@ -113,7 +112,6 @@ class SimulationResults:
         lines = header.strip().split("\n")
 
         in_variables = False
-        var_idx = 0
 
         for line in lines:
             line = line.strip()
@@ -179,13 +177,9 @@ class SimulationResults:
         # LTspice uses double precision (8 bytes) for independent variable (time/freq)
         # and either double (8 bytes) or complex double (16 bytes) for dependent variables
 
-        if self._is_complex:
-            # AC analysis: first var is double, rest are complex (2 doubles)
-            # Each point: 8 bytes + (num_vars-1)*16 bytes
-            point_size = 8 + (num_vars - 1) * 16
-        else:
-            # Transient/DC: all doubles
-            point_size = num_vars * 8
+        # AC analysis: first var is double (8 bytes), rest are complex (16 bytes)
+        # Transient/DC: all doubles (8 bytes each)
+        point_size = 8 + (num_vars - 1) * 16 if self._is_complex else num_vars * 8
 
         expected_size = point_size * self._num_points
         if len(data) < expected_size:
@@ -346,7 +340,8 @@ class SimulationResults:
                     return np.abs(values)
                 return values
 
-        raise KeyError(f"Current through '{component}' not found. Available: {list(self.data.keys())}")
+        available = list(self.data.keys())
+        raise KeyError(f"Current through '{component}' not found. Available: {available}")
 
     def get_variable(self, name: str) -> np.ndarray:
         """Get any variable by exact name.

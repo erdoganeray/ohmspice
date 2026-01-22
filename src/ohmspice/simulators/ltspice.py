@@ -186,7 +186,7 @@ class LTSpice(Simulator):
         cmd = [str(self.executable), "-b", "-Run", str(netlist_path)]
 
         try:
-            result = subprocess.run(
+            subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,

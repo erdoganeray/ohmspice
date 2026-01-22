@@ -1,6 +1,5 @@
 """Passive components: Resistor, Capacitor, Inductor."""
 
-from typing import Union
 
 from ohmspice.components.base import TwoTerminalComponent
 
@@ -26,7 +25,7 @@ class Resistor(TwoTerminalComponent):
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
     ) -> None:
         """Create a resistor.
 
@@ -61,7 +60,7 @@ class Capacitor(TwoTerminalComponent):
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
         initial_voltage: float | None = None,
     ) -> None:
         """Create a capacitor.
@@ -106,7 +105,7 @@ class Inductor(TwoTerminalComponent):
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
         initial_current: float | None = None,
     ) -> None:
         """Create an inductor.

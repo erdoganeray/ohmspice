@@ -1,7 +1,6 @@
 """Base component class for SPICE circuits."""
 
 from abc import ABC, abstractmethod
-from typing import Any, Union
 
 from ohmspice.components.utils import parse_value
 
@@ -91,7 +90,7 @@ class TwoTerminalComponent(Component):
         name: str,
         node1: str,
         node2: str,
-        value: Union[str, int, float],
+        value: str | int | float,
     ) -> None:
         """Initialize a two-terminal component.
 
