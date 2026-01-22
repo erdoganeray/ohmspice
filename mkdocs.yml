@@ -1,0 +1,88 @@
+site_name: OhmSPICE
+site_description: Open-source SPICE toolkit with AI integration
+site_author: Eray Erdogan
+site_url: https://erdoganeray.github.io/ohmspice
+
+repo_name: erdoganeray/ohmspice
+repo_url: https://github.com/erdoganeray/ohmspice
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - First Simulation: getting-started/first-simulation.md
+  - User Guide:
+    - Circuits: user-guide/circuits.md
+    - Templates: user-guide/templates.md
+    - Simulation: user-guide/simulation.md
+    - Visualization: user-guide/visualization.md
+    - CLI: user-guide/cli.md
+  - API Reference:
+    - Circuit: api-reference/circuit.md
+    - Components: api-reference/components.md
+    - Simulators: api-reference/simulators.md
+    - Templates: api-reference/templates.md
+  - MCP Integration:
+    - Setup: mcp-integration/setup.md
+    - Tools: mcp-integration/tools.md
+  - Examples:
+    - Filters: examples/filters.md
+    - Amplifiers: examples/amplifiers.md
+    - Power Circuits: examples/power-circuits.md
