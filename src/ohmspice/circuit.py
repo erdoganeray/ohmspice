@@ -1,5 +1,7 @@
 """Circuit builder for creating SPICE circuits."""
 
+from typing import Any
+
 from ohmspice.components.base import Component
 from ohmspice.components.passive import Capacitor, Inductor, Resistor
 from ohmspice.components.sources import CurrentSource, VoltageSource
@@ -134,8 +136,8 @@ class Circuit:
         dc: float | None = None,
         ac: float | None = None,
         ac_phase: float = 0,
-        pulse: dict | None = None,
-        sine: dict | None = None,
+        pulse: dict[str, Any] | None = None,
+        sine: dict[str, Any] | None = None,
     ) -> "Circuit":
         """Add a voltage source to the circuit.
 

@@ -1,5 +1,7 @@
 """Source components: VoltageSource, CurrentSource."""
 
+from typing import Any
+
 from ohmspice.components.base import Component
 
 
@@ -39,8 +41,8 @@ class VoltageSource(Component):
         dc: float | None = None,
         ac: float | None = None,
         ac_phase: float = 0,
-        pulse: dict | None = None,
-        sine: dict | None = None,
+        pulse: dict[str, Any] | None = None,
+        sine: dict[str, Any] | None = None,
     ) -> None:
         """Create a voltage source.
 

@@ -226,11 +226,11 @@ class SimulationResults:
         # Look for frequency variable
         for name in ["frequency", "freq", "Frequency"]:
             if name in self.data:
-                return np.abs(self.data[name])  # Frequency might be stored as complex
+                return np.asarray(np.abs(self.data[name]))  # Frequency might be stored as complex
 
         # First variable is often the independent variable
         if self.variables and self.variables[0].lower() in ["frequency", "freq"]:
-            return np.abs(self.data[self.variables[0]])
+            return np.asarray(np.abs(self.data[self.variables[0]]))
 
         raise ValueError("No frequency data found in results")
 
@@ -278,7 +278,7 @@ class SimulationResults:
             if name in self.data:
                 values = self.data[name]
                 if np.iscomplexobj(values):
-                    return np.abs(values)
+                    return np.asarray(np.abs(values))
                 return values
 
         raise KeyError(f"Voltage at node '{node}' not found. Available: {list(self.data.keys())}")
@@ -308,7 +308,7 @@ class SimulationResults:
             if name in self.data:
                 values = self.data[name]
                 if np.iscomplexobj(values):
-                    return np.angle(values, deg=True)
+                    return np.asarray(np.angle(values, deg=True))
                 raise ValueError(f"Data for '{node}' is not complex, no phase available")
 
         raise KeyError(f"Voltage at node '{node}' not found")
@@ -337,7 +337,7 @@ class SimulationResults:
             if name in self.data:
                 values = self.data[name]
                 if np.iscomplexobj(values):
-                    return np.abs(values)
+                    return np.asarray(np.abs(values))
                 return values
 
         available = list(self.data.keys())
