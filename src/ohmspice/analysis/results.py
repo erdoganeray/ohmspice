@@ -6,8 +6,10 @@ Supports parsing LTspice .raw binary files.
 import struct
 from enum import Enum
 from pathlib import Path
+from typing import Any
 
 import numpy as np
+import numpy.typing as npt
 
 
 class AnalysisType(Enum):
@@ -59,7 +61,7 @@ class SimulationResults:
         self._variable_types: list[str] = []
         self._num_points = 0
         self._is_complex = False
-        self.data: dict[str, np.ndarray] = {}
+        self.data: dict[str, npt.NDArray[Any]] = {}
 
         self._parse()
 
@@ -214,7 +216,7 @@ class SimulationResults:
                         self.data[var_name][point_idx] = complex(real, imag)
                         offset += 16
 
-    def get_frequency(self) -> np.ndarray:
+    def get_frequency(self) -> npt.NDArray[Any]:
         """Get frequency values for AC analysis.
 
         Returns:
@@ -234,7 +236,7 @@ class SimulationResults:
 
         raise ValueError("No frequency data found in results")
 
-    def get_time(self) -> np.ndarray:
+    def get_time(self) -> npt.NDArray[Any]:
         """Get time values for transient analysis.
 
         Returns:
@@ -253,7 +255,7 @@ class SimulationResults:
 
         raise ValueError("No time data found in results")
 
-    def get_voltage(self, node: str) -> np.ndarray:
+    def get_voltage(self, node: str) -> npt.NDArray[Any]:
         """Get voltage magnitude at a node.
 
         Args:
@@ -283,7 +285,7 @@ class SimulationResults:
 
         raise KeyError(f"Voltage at node '{node}' not found. Available: {list(self.data.keys())}")
 
-    def get_phase(self, node: str) -> np.ndarray:
+    def get_phase(self, node: str) -> npt.NDArray[Any]:
         """Get voltage phase at a node (in degrees).
 
         Args:
@@ -313,7 +315,7 @@ class SimulationResults:
 
         raise KeyError(f"Voltage at node '{node}' not found")
 
-    def get_current(self, component: str) -> np.ndarray:
+    def get_current(self, component: str) -> npt.NDArray[Any]:
         """Get current through a component.
 
         Args:
@@ -343,7 +345,7 @@ class SimulationResults:
         available = list(self.data.keys())
         raise KeyError(f"Current through '{component}' not found. Available: {available}")
 
-    def get_variable(self, name: str) -> np.ndarray:
+    def get_variable(self, name: str) -> npt.NDArray[Any]:
         """Get any variable by exact name.
 
         Args:
