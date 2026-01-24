@@ -6,7 +6,7 @@ import ohmspice
 def test_version():
     """Test that version is defined."""
     assert hasattr(ohmspice, "__version__")
-    assert ohmspice.__version__ == "0.1.0"
+    assert ohmspice.__version__ == "0.2.0"
 
 
 def test_author():
