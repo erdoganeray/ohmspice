@@ -45,8 +45,7 @@ REVERSE_MULTIPLIERS: list[tuple[float, str]] = [
 # Pattern to match value with optional multiplier
 # Note: 'meg' must come before 'm' for correct matching
 VALUE_PATTERN = re.compile(
-    r"^([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*(meg|f|p|n|u|µ|m|k|g|t)?(.*)$",
-    re.IGNORECASE
+    r"^([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*(meg|f|p|n|u|µ|m|k|g|t)?(.*)$", re.IGNORECASE
 )
 
 

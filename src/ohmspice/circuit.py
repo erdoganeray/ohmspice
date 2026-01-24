@@ -1,6 +1,5 @@
 """Circuit builder for creating SPICE circuits."""
 
-
 from ohmspice.components.base import Component
 from ohmspice.components.passive import Capacitor, Inductor, Resistor
 from ohmspice.components.sources import CurrentSource, VoltageSource
@@ -102,9 +101,7 @@ class Circuit:
         Returns:
             Self for method chaining.
         """
-        return self._add_component(
-            Capacitor(name, node1, node2, value, initial_voltage)
-        )
+        return self._add_component(Capacitor(name, node1, node2, value, initial_voltage))
 
     def add_inductor(
         self,
@@ -126,9 +123,7 @@ class Circuit:
         Returns:
             Self for method chaining.
         """
-        return self._add_component(
-            Inductor(name, node1, node2, value, initial_current)
-        )
+        return self._add_component(Inductor(name, node1, node2, value, initial_current))
 
     def add_voltage_source(
         self,
@@ -159,9 +154,7 @@ class Circuit:
         """
         return self._add_component(
             VoltageSource(
-                name, node_pos, node_neg,
-                dc=dc, ac=ac, ac_phase=ac_phase,
-                pulse=pulse, sine=sine
+                name, node_pos, node_neg, dc=dc, ac=ac, ac_phase=ac_phase, pulse=pulse, sine=sine
             )
         )
 
@@ -286,13 +279,13 @@ class Circuit:
     def _format_frequency(freq: float) -> str:
         """Format frequency for SPICE (e.g., 1e6 -> 1meg)."""
         if freq >= 1e12:
-            return f"{freq/1e12}t"
+            return f"{freq / 1e12}t"
         elif freq >= 1e9:
-            return f"{freq/1e9}g"
+            return f"{freq / 1e9}g"
         elif freq >= 1e6:
-            return f"{freq/1e6}meg"
+            return f"{freq / 1e6}meg"
         elif freq >= 1e3:
-            return f"{freq/1e3}k"
+            return f"{freq / 1e3}k"
         else:
             return str(freq)
 

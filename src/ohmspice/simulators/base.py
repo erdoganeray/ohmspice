@@ -88,14 +88,17 @@ class Simulator(ABC):
 
 class SimulatorError(Exception):
     """Base exception for simulator errors."""
+
     pass
 
 
 class SimulatorNotFoundError(SimulatorError):
     """Raised when simulator executable is not found."""
+
     pass
 
 
 class SimulationError(SimulatorError):
     """Raised when simulation fails."""
+
     pass

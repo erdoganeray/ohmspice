@@ -107,6 +107,7 @@ class LTSpice(Simulator):
 
         # Check if ltspice is in PATH
         import shutil
+
         ltspice_in_path = shutil.which("ltspice") or shutil.which("XVIIx64")
         if ltspice_in_path:
             return Path(ltspice_in_path)

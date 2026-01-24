@@ -1,6 +1,5 @@
 """Source components: VoltageSource, CurrentSource."""
 
-
 from ohmspice.components.base import Component
 
 
@@ -113,10 +112,8 @@ class VoltageSource(Component):
         # Sine waveform
         if self.sine is not None:
             s = self.sine
-            sine_str = (
-                f"SINE({s.get('vo', 0)} {s.get('va', 0)} {s.get('freq', 0)}"
-            )
-            if s.get('td', 0) != 0 or s.get('theta', 0) != 0:
+            sine_str = f"SINE({s.get('vo', 0)} {s.get('va', 0)} {s.get('freq', 0)}"
+            if s.get("td", 0) != 0 or s.get("theta", 0) != 0:
                 sine_str += f" {s.get('td', 0)} {s.get('theta', 0)}"
             sine_str += ")"
             parts.append(sine_str)

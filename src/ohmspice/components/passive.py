@@ -1,6 +1,5 @@
 """Passive components: Resistor, Capacitor, Inductor."""
 
-
 from ohmspice.components.base import TwoTerminalComponent
 
 
