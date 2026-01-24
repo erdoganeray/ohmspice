@@ -1,6 +1,6 @@
 [project]
 name = "ohmspice"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source SPICE toolkit with AI integration for electronic circuit design"
 readme = "README.md"
 license = {text = "MIT"}
@@ -20,6 +20,7 @@ keywords = ["spice", "circuit", "simulation", "electronics", "ltspice", "ngspice
 dependencies = [
     "numpy>=1.24.0",
     "matplotlib>=3.7.0",
+    "click>=8.0",
 ]
 
 [project.optional-dependencies]
@@ -71,6 +72,11 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --cov=ohmspice --cov-report=term-missing"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = [
+    "ignore::UserWarning:ohmspice.analysis.results",
+]
 
 [tool.mypy]
 python_version = "3.10"
